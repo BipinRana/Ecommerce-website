@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>Customers:</h1>
+    <button style="float: right;" onclick="redirectTo('/adminPage')">Go back</button>
+    <form action='/viewCustomer' method="post">
+        <input type="hidden" value="0" name="Sort">
+        <input type="submit" value="Sort by Name"> </form>
+    <form action='/viewCustomer' method="post">
+        <input type="hidden" value="2" name="Sort">
+        <input type="submit" value="Sort by Id"> </form>
+
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+        </tr>
+
+        <% var sum = 0; %>
+        <% if (customer.length > 0) { %>
+            <% for (var i = 0; i < customer.length; i++) { %>
+                <tr>
+                    <td><%- customer[i].CustomerID %></td>
+                    <td><%- customer[i].CustomerName %></td>
+                    <td><%- customer[i].CustomerGender %></td>
+                    <td><%- customer[i].CustomerEmail %></td>
+                </tr>
+            <% } %>
+           
+        <% } else { %>
+            <tr>
+                <td colspan="4">
+                    <h1>No customer found</h1>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+    <script>
+        function redirectTo(path){
+            window.location.href=path;
+        }
+        
+    </script>
+</body>
+</html>

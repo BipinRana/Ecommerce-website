@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>Products:</h1>
+    <button onclick="redirectTo('/cartView')" style="float:right;">See Cart</button>
+    <button onclick="redirectTo('/login')" style="float:right;">Login</button>
+    <button onclick="redirectTo('/logout')" style="float:right;">Log out</button>
+    <% if (product.length > 0) { %>
+        <% for (var i = 0; i < product.length; i++) { %>
+            <form action="/" method="post">
+            <img src="<%=product[i].directory %>" style="float: left; padding-right: 30px; height: 100px; width: 150px;" >
+            <p>Name: <%= product[i].itemName %></p>
+            <p>Price: <%= product[i].itemPrice %></p>
+            <p>Comment: <%= product[i].itemComment %></p>
+            <input type="hidden" name="Name" value="<%=product[i].itemName %>">
+            <input type="hidden" name="Directory" value="<%=product[i].itemDir %>">
+            <input type="hidden" name="Price" value="<%=product[i].itemPrice %>">
+            <input type="hidden" name="Id" value="<%=product[i].itemId %>">
+            <label>Quantity:</label>
+            <input type="number" name="Quantity" min="1" required width="200">
+            <input type="submit" value="Add to Cart">
+            </form>
+            <br>
+            <hr>
+        <% } %>
+    <% } else { %>
+        <h1>No products found</h1>
+    <% } %>
+    <script>
+        function redirectTo(path) {
+          window.location.href = path;
+        }
+      </script>
+</body>
+</html>

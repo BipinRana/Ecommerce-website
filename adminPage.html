@@ -1,0 +1,22 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Admin Page</h1>
+        <button onclick="redirectTo('/adminPage/productInsert')" id="addProduct">Add Product</button>
+        <button onclick="redirectTo('/adminPage/productView')" id="viewProduct">View Product</button>
+        <br><br><br>
+
+        
+        <button onclick="redirectTo('/adminPage/viewCustomer')" id="viewCustomer">View Customers</button>
+        <button onclick="redirectTo('/adminPage/viewOrder')" id="viewOrder">View Order</button>
+        
+        <br><br><br>
+        <script>
+            function redirectTo(path) {
+              window.location.href = path;
+            }
+          </script>
+    </body>
+</html>

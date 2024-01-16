@@ -1,0 +1,18 @@
+<html>
+    <head></head>
+    <body>
+        <form action="/login" method="post">
+            
+            Email: <input type="email" name="email"><br><br>
+            Password: <input type="password" name="password"><br><br>
+            <p onclick="redirectTo('/register')"><u>Dont have an account?</u></p>
+            <input type="submit" value="Login">
+            </form>
+            <script>
+                function redirectTo(path){
+                    window.location.href=path;
+                }
+            </script>
+    </body>
+
+</html>

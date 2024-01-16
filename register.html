@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+<body>
+    <form id="myForm" action="/register" method="post">
+        Name: <input type="text" name="userName" id="nameValue"><br><br>
+        Email: <input type="email" name="email" id="emailValue"><br><br>
+        Gender: 
+        <input type="radio" name="gender" id="genderInput" value="Male">Male
+        <input type="radio" name="gender" id="genderInput" value="Female">Female<br><br>
+        Password: <input type="password" name="password" id="passwordInput"><br><br>
+        Phone number: <input type="number" name="phoneNumber" id="phoneInput" min="10"><br><br>
+        <div onclick="redirectTo('/login')"><u>Already Have an account?</u></div>
+        <input type="submit" value="Register">
+    </form>
+
+    <script>
+        function redirectTo(path) {
+            window.location.href = path;
+        }
+
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            var nameValue = document.getElementById('nameValue').value;
+            var emailValue = document.getElementById('emailValue').value;
+            var passwordValue = document.getElementById('passwordInput').value;
+            var phoneValue = document.getElementById('phoneInput').value;
+            var genderValue = document.querySelector('input[name="gender"]:checked');
+
+            if (!genderValue || nameValue.trim() === '' || emailValue.trim() === '' || passwordValue.trim() === '' || phoneValue.trim() === '') {
+                alert('Please fill in all fields and select a gender.');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>Cart items:</h1>
+    <button style="float: right;" onclick="redirectTo('/')">Go back</button>
+    <form action='/cartView' method="post">
+        <input type="hidden" value="0" name="Sort">
+        <input type="submit" value="Sort by Name"> </form>
+    <form action='/cartView' method="post">
+        <input type="hidden" value="2" name="Sort">
+        <input type="submit" value="Sort by Price"> </form>
+
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Comment</th>
+            <th>Action</th>
+        </tr>
+
+        <% var sum = 0; %>
+        <% if (item.length > 0) { %>
+            <% for (var i = 0; i < item.length; i++) { %>
+                <tr>
+                    <td><%- item[i].productId %></td>
+                    <td><%- item[i].productName %></td>
+                    <td><%- item[i].productPrice %></td>
+                    <td><%- item[i].productQuantity %></td>
+                    <td><%- item[i].productComment %></td>
+                    <td>
+                        <form action="/delete/<%- item[i].productId %>" method="post">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+                <% sum += item[i].productQuantity * item[i].productPrice; %>
+            <% } %>
+            <tr>
+                <td colspan="6">Total Price=<%- sum %></td>
+            </tr>
+        <% } else { %>
+            <tr>
+                <td colspan="6">
+                    <h1>No products found</h1>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+    <br><br>
+    <button onclick="redirectTo('/purchase')">Check Out</button>
+    <script>
+        function redirectTo(path){
+            window.location.href=path;
+        }
+        
+    </script>
+</body>
+</html>
